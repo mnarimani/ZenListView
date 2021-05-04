@@ -5,7 +5,7 @@
   "unity": "2020",
   "license": "MIT",
   "dependencies": {
-    "Zenject",
-    "ZenExtended"
+    "com.svermeulen.extenject":  "9.0.2",
+    "com.mnarimani.ZenExtended": "1.0.0"
   }
 }
