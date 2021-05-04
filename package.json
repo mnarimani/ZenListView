@@ -6,6 +6,6 @@
   "license": "MIT",
   "dependencies": {
     "com.svermeulen.extenject":  "9.0.2",
-    "com.mnarimani.ZenExtended": "1.0.0"
+    "com.mnarimani.zenextended": "1.0.0"
   }
 }
