@@ -51,10 +51,7 @@ namespace ZenListView
                 int index = _elementsInUse.Count - 1;
 
                 TElement v = _elementsInUse[index];
-                if (v is IDisposable disposable)
-                    disposable.Dispose();
-                else
-                    Destroy(v);
+                v.Dispose();
 
                 _elementsInUse.RemoveAt(index);
             }
@@ -67,13 +64,12 @@ namespace ZenListView
 
         private void OnDestroy()
         {
-            if (!typeof(IDisposable).IsAssignableFrom(typeof(TElement))) return;
-
             foreach (TElement e in _elementsInUse)
             {
-                if (e is IDisposable disposable)
-                    disposable.Dispose();
+                e.Dispose();
             }
+            
+            _elementsInUse.Clear();
         }
     }
 }
