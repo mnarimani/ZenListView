@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -39,6 +38,8 @@ namespace ZenListView
 
         public void Reload()
         {
+            _elementsInUse.RemoveAll(e => e == null || (e is Component c && (c == null || c.gameObject == null)));
+            
             while (_elementsInUse.Count < Data.Count)
             {
                 TElement view = _factory.Create();
@@ -66,6 +67,12 @@ namespace ZenListView
         {
             foreach (TElement e in _elementsInUse)
             {
+                if (e == null)
+                    continue;
+
+                if (e is Component c && (c == null || c.gameObject == null))
+                    continue;
+                    
                 e.Dispose();
             }
             
